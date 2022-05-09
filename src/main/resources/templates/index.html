@@ -51,7 +51,11 @@
 <h4 id="emptyText" style="display:block">
     Current Data is not exist, Please create By clicking Add Button below
 </h4>
+<br/>
+
 <table  id="tableData"  style="display:none" border="1">
+    Search <input type="text" ng-model="search"
+                  placeholder="Enter some text to search" />
     <tr>
 
         <th>Name</th>
@@ -60,7 +64,7 @@
         <!--<th>Address</th>
 -->    </tr>
     <!-- $scope.users -->
-    <tr ng-repeat="user in users">
+    <tr ng-repeat="user in users | filter : search">
 
         <td> {{ user.name }}</td>
         <!--<td >{{ user.number }}</td>-->
