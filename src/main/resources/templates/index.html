@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>AngularJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
+
+    <script th:src="@{/js/app/main.js}"></script>
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+
+    <head>
+<body ng-app="UserManagement" ng-controller="UserController">
+<h3>
+    CRUD: Spring Boot + Rest + AngularJS
+</h3>
+<h4>
+    List User
+</h4>
+
+
+<form  ng-submit="submitUser()">
+    <table id="tableHide" style="display:none" border="0">
+        <tr style="display:none">
+            <td>User Id</td>
+            <td>{{user.id}}</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" id ="nameId" ng-model="user.name" /></td>
+        </tr>
+        <tr>
+            <td>Number</td>
+            <td><input type="text" id ="numberId" ng-model="user.number"  /></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id ="emailId" ng-model="user.email"  /></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" id="addressId" ng-model="user.address"  /></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" value="Submit" class="blue-button" />
+            </td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+<h4 id="emptyText" style="display:block">
+    Current Data is not exist, Please create By clicking Add Button below
+</h4>
+<table  id="tableData"  style="display:none" border="1">
+    <tr>
+
+        <th>Name</th>
+        <!--<th>Number</th>
+        --><th>Email</th>
+        <!--<th>Address</th>
+-->    </tr>
+    <!-- $scope.users -->
+    <tr ng-repeat="user in users">
+
+        <td> {{ user.name }}</td>
+        <!--<td >{{ user.number }}</td>-->
+        <td >{{ user.email }}</td>
+        <!--<td >{{ user.address }}</td>-->
+        <td>
+            <a ng-click="editUser(user)" class="edit-button">Edit</a>
+        </td>
+        <td>
+            <a ng-click="deleteUser(user)" class="delete-button">Delete</a>
+        </td>
+    </tr>
+</table>
+<button type="button" class="create-button" ng-click="createUser()" id="createUser">Add User</button>
+</body>
+
+
+</html>
