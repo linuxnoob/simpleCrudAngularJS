@@ -54,6 +54,7 @@ app.controller("UserController", function($scope, $http) {
         var x = document.getElementById("tableHide");
         x.style.display = "none";
         $http({
+
             method: 'DELETE',
             url: '/user/deleteUser',
             params:{userId : user.id}

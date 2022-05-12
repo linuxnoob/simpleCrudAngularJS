@@ -5,7 +5,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js"></script>
 
     <script th:src="@{/js/app/main.js}"></script>
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <!--<link th:href="@{/css/main.css}" rel="stylesheet" />-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.min.css" integrity="sha512-lPdbDk/M+sws6OiYz37jQBCozHzd4B8Wd+IGIczzbs3RucYPn4mNXgrYKlUrGmJ/34KB3tU7bm8tQ1v3AtJkMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0/ng-table.min.js" integrity="sha512-X75ONbxI/GkbDTIJLqaF//7FJXu+z/VzyXFr/3lHfROj17Jj/b4lB78h129kfrnXwK1eoz427iRMP1+zxygtjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     <head>
 <body ng-app="UserManagement" ng-controller="UserController">
@@ -18,7 +26,7 @@
 
 
 <form  ng-submit="submitUser()">
-    <table id="tableHide" style="display:none" border="0">
+    <table id="tableHide" style="display:none" border="0" >
         <tr style="display:none">
             <td>User Id</td>
             <td>{{user.id}}</td>
@@ -53,22 +61,22 @@
 </h4>
 <br/>
 
-<table  id="tableData"  style="display:none" border="1">
+<table  id="tableData"  style="display:none" border="1" ng-table ="usersTable" class="table table-bordered table-striped">
     Search <input type="text" ng-model="search"
                   placeholder="Enter some text to search" />
     <tr>
 
-        <th>Name</th>
+        <td data-title="Name">Name</td>
         <!--<th>Number</th>
-        --><th>Email</th>
+        --><td data-title="Email">Email</td>
         <!--<th>Address</th>
 -->    </tr>
     <!-- $scope.users -->
     <tr ng-repeat="user in users | filter : search">
 
-        <td> {{ user.name }}</td>
+        <td sortable="'name'"> {{ user.name }}</td>
         <!--<td >{{ user.number }}</td>-->
-        <td >{{ user.email }}</td>
+        <td sortable="'email'">{{ user.email }}</td>
         <!--<td >{{ user.address }}</td>-->
         <td>
             <a ng-click="editUser(user)" class="edit-button">Edit</a>
